@@ -1,0 +1,313 @@
+<!DOCTYPE html><html><head>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <link rel="shortcut icon" href="https://cdn.iconscout.com/icon/premium/png-512-thumb/t-alphabet-1-866380.png">
+    <title> TEDIT </title>
+    <script src="p5.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+<script src="./p5.play.js"></script>
+<script src="p5.js-speech/lib/p5.speech.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+    <select id="case" title="Font-Preferances">
+        <option value="none">None</option>
+        <option value="uppercase">Upper Case</option>
+        <option value="lowercase">Lower case</option>
+        <option value="capitalize">Capitalize</option>
+      </select>
+      <script src="sketch.js"></script>
+      <textarea id="document" cols="100" rows="50" autofocus></textarea>
+      <select id="symbol">
+          <option value="1">Add</option>
+          <option value="2">Subtract</option>
+          <option value="3">Divide</option>
+          <option value="4">Multiply</option>
+        <script src="sketch.js"></script>
+      </select>
+      <input type="text" list="voic" id="voices">
+      <datalist id="voic" title="Speech Voices">
+  <optgroup label="Voices for Microsoft Edge">
+  <option value="Microsoft David - English (United States)">Microsoft David - English (United States)</option>
+  <option value="Microsoft Ravi - English (India)">Microsoft Ravi - English (India)</option>
+  <option value="Microsoft Heera - English (India)">Microsoft Heera - English (India)</option>
+  <option value="Microsoft Mark - English (United States)">Microsoft Mark - English (United States)</option>
+  <option value="Microsoft Zira - English (United States)">Microsoft Zira - English (United States)</option>
+  <option value="Microsoft Katja Online (Natural) - German (Germany)">Microsoft Katja Online (Natural) - German (Germany)</option>
+  <option value="Microsoft Natasha Online (Natural) - English (Australia)">Microsoft Natasha Online (Natural) - English (Australia)</option>
+  <option value="Microsoft Clara Online (Natural) - English (Canada)">Microsoft Clara Online (Natural) - English (Canada)</option>
+  <option value="Microsoft Mia Online (Natural) - English (United Kingdom)">Microsoft Mia Online (Natural) - English (United Kingdom)</option>
+  <option value="Microsoft Neerja Online (Natural) - English (India)">Microsoft Neerja Online (Natural) - English (India)</option>
+  <option value="Microsoft Aria Online (Natural) - English (United States)">Microsoft Aria Online (Natural) - English (United States)</option>
+  <option value="Microsoft Mark - English (United States)">Microsoft Mark - English (United States)</option>
+  <option value="Microsoft Guy Online (Natural) - English (United States)">Microsoft Guy Online (Natural) - English (United States)</option>
+  <option value="Microsoft Elvira Online (Natural) - Spanish (Spain)">Microsoft Elvira Online (Natural) - Spanish (Spain)</option>
+  <option value="Microsoft Dalia Online (Natural) - Spanish (Mexico)">Microsoft Dalia Online (Natural) - Spanish (Mexico)</option>
+  <option value="Microsoft Sylvie Online (Natural) - French (Canada)">Microsoft Sylvie Online (Natural) - French (Canada)</option>
+  <option value="Microsoft Denise Online (Natural) - French (France)">Microsoft Denise Online (Natural) - French (France)</option>
+  <option value="Microsoft Swara Online (Natural) - Hindi (India)">Microsoft Swara Online (Natural) - Hindi (India)</option>
+  <option value="Microsoft Elsa Online (Natural) - Italian (Italy)">Microsoft Elsa Online (Natural) - Italian (Italy)</option>
+  <option value="Microsoft Nanami Online (Natural) - Japanese (Japan)">Microsoft Nanami Online (Natural) - Japanese (Japan)</option>
+  <option value="Microsoft SunHi Online (Natural) - Korean (Korea)">Microsoft SunHi Online (Natural) - Korean (Korea)</option>
+  <option value=" Microsoft Colette Online (Natural) - Dutch (Netherlands)"> Microsoft Colette Online (Natural) - Dutch (Netherlands)</option>
+  <option value="Microsoft Zofia Online (Natural) - Polish (Poland)">Microsoft Zofia Online (Natural) - Polish (Poland)</option>
+  <option value="Microsoft Francisca Online (Natural) - Portuguese (Brazil)">Microsoft Francisca Online (Natural) - Portuguese (Brazil)</option>
+  <option value="Microsoft Dariya Online (Natural) - Russian (Russia)">Microsoft Dariya Online (Natural) - Russian (Russia)</option>
+  <option value="Microsoft Emel Online (Natural) - Turkish (Turkey)">Microsoft Emel Online (Natural) - Turkish (Turkey)</option>
+  <option value="Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)">Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)</option>
+  <option value="Microsoft HiuGaai Online (Natural) - Chinese (Hong Kong)">Microsoft HiuGaai Online (Natural) - Chinese (Hong Kong)</option>
+  <option value="Microsoft HiuGaai Online (Natural) - Chinese (Hong Kong)">Microsoft HiuGaai Online (Natural) - Chinese (Hong Kong)</option>
+  <option value="Microsoft HsiaoYu Online (Natural) - Chinese (Taiwan)">Microsoft HsiaoYu Online (Natural) - Chinese (Taiwan)</option>
+  <option value="Microsoft David Desktop - English (United States)">Microsoft David Desktop - English (United States)</option>
+  <option value="Microsoft Zira Desktop - English (United States)">Microsoft Zira Desktop - English (United States)</option>
+  </optgroup>
+  <optgroup label="Voices For Google Chrome">
+  <option value="Google Deutsch">Google Deutsch</option>
+  <option value="Google US English">Google US English</option>
+  <option value="Google UK English Female">Google UK English Female</option>
+  <option value="Google UK English Male">Google UK English Male</option>
+  <option value="Google español">Google español</option>
+  <option value="Google español de Estados Unidos">Google español de Estados Unidos</option>
+  <option value="Google français">Google français</option>
+  <option value="Google हिन्दी">Google हिन्दी</option>
+  <option value="Google Bahasa Indonesia">Google Bahasa Indonesia</option>
+  <option value="Google italiano">Google italiano</option>
+  <option value="Google 日本語">Google 日本語</option>
+  <option value="Google 한국의">Google 한국의</option>
+  <option value="Google Nederlands">Google Nederlands</option>
+  <option value="Google polski">Google polski</option>
+  <option value="Google português do Brasil">Google português do Brasil</option>
+  <option value="Google русский">Google русский</option>
+  <option value="Google 普通话（中国大陆）">Google 普通话（中国大陆）</option>
+  <option value="Google 粤語（香港）">Google 粤語（香港）</option>
+  <option value="Google 國語（臺灣）">Google 國語（臺灣）</option>
+  </optgroup>
+</datalist>
+      <form>
+      <input id="textColor" type="color" title="Text Colour"/>
+      <input id="bgColor" type="color" value="#FFFFFF" title="Background Colour"/>
+      <input type="reset" value="Reset" id="reset" title="Reset"/>
+    </form>
+    <button id='bold' title="Bold"><b>B</b></button>
+    <button id='italic' title="Italic"><i>I</i></button>
+    <button id='q' title="Insert Question mark."><b>?</b></button>
+    <button id='i' title="Insert Exclamation mark."><b>!</b></button>
+    <button id='dot'>•</button>
+    <button id='speak' title="Speak what I've written">Speak</button>
+    <button id='stop' title="Don't close the tab, if the voice is till speaking. Press this button!">Stop Speech</button>
+    <button id='addB'>Add</button>
+    <a href="usage.html" title="Find out how to use this app!">Usage</a>
+    <input type="text" readonly id="countW" title="Word Count">
+    <input id="add" placeholder="Number 1" readonly>
+    <input id="add2" placeholder="Number 2">
+    <input type="range" min="0" max="2" step="0.1" value="1" id="rate"/>
+    <input type="range" min="0" max="1" step="0.1" value="1" id="volume"/>
+    <input type="color" id="caret-color">
+    <select id="fontsD">
+      <option value="Agency Fb" style="font-family: agency fb;" title="Agency Fb"> Agency Fb</option>
+      <option value="Algerian" style="font-family: algerian;" title="Algerian"> Algerian </option>
+      <option value="Arial" style="font-family: arial;" title="Arial"> Arial </option>
+      <option value="Arial Black" style="font-family: arial black;" title="Arial Black"> Arial black </option>
+      <option value="Arial Narrow" style="font-family: arial narrow;" title="Arial Narrow"> Arial Narrow </option>
+      <option value="Arial Nova" style="font-family: arial nova;" title="Arial Nova"> Arial Nova </option>
+      <option value="Bahnschrift" style="font-family: Bahnschrift;" title="Bahnschrift"> Bahnschrift </option>
+      <option value="Bahnschrift Condensed" style="font-family: Bahnschrift Condensed;" title="Bahnschrift Condensed"> Bahnschrift Condensed</option>
+      <option value="Bahnschrift Light" style="font-family: Bahnschrift Light;" title="Bahnschrift Light"> Bahnschrift Light</option>
+      <option value="Bahnschrift Light Condensed" style="font-family: Bahnschrift Light Condensed;" title="Bahnschrift Light Condensed"> Bahnschrift Light Condensed</option>
+      <option value="Baskerville Old Face" style="font-family: Baskerville Old Face;" title="Baskerville Old Face"> Baskerville Old Face</option>
+      <option value="Bell MT" style="font-family: Bell MT;" title="Bell MT"> Bell MT</option>
+      <option value="Bembo" style="font-family: Bembo;" title="Bembo"> Bembo</option>
+      <option value="Berlin Sans Fb" style="font-family: Berlin Sans Fb;" title="Berlin Sans Fb"> Berlin Sans Fb</option>
+      <option value="Berlin Sans Fb Demi" style="font-family: Berlin Sans Fb Demi;" title="Berlin Sans Fb Demi"> Berlin Sans Fb Demi</option>
+      <option value="Bernard MT Condensed" style="font-family: Bernard MT Condensed;" title="Bernard MT Condensed"> Bernard MT Condensed</option>
+      <option value="Blackadder ITC" style="font-family: Blackadder ITC;" title="Blackadder ITC"> Blackadder ITC</option>
+      <option value="Bodoni MT" style="font-family: Bodoni MT;" title="Bodoni MT"> Bodoni MT</option>
+      <option value="Bodoni MT Black" style="font-family: Bodoni MT Black;" title="Bodoni MT Black"> Bodoni MT Black</option>
+      <option value="Bodoni MT Condensed" style="font-family: Bodoni MT Condensed;" title="Bodoni MT Condensed"> Bodoni MT Condensed</option>
+      <option value="Book Antiqua" style="font-family: Book Antiqua;" title="Book Antiqua"> Book Antiqua</option>
+      <option value="Bookman Old Style" style="font-family: Bookman Old Style;" title="Bookman Old Style"> Bookman Old Style</option>
+      <option value="Bowlby One SC" style="font-family: Bowlby One SC;" title="Bowlby One SC"> Bowlby One SC</option>
+      <option value="Bradley Hand ITC" style="font-family: Bradley Hand ITC;" title="Bradley Hand ITC"> Bradley Hand ITC</option>
+      <option value="Broadway" style="font-family: Broadway;" title="Broadway"> Broadway</option>
+      <option value="Brush Script MT" style="font-family: Brush Script MT;" title="Brush Script MT"> Brush Script MT</option>
+      <option value="Bungee Inline" style="font-family: Bungee Inline; font-size: 9px" title="Bungee Inline"> Bungee Inline</option>
+      <option value="Cabin Sketch" style="font-family: Cabin Sketch;" title="Cabin Sketch"> Cabin Sketch</option>
+      <option value="Calibri" style="font-family: Calibri;" title="Calibri" selected> Calibri </option>
+      <option value="Calibri Light" style="font-family: Calibri Light;" title="Calibri Light"> Calibri Light</option>
+      <option value="Californian Fb" style="font-family: Californian Fb;" title="Californian Fb"> Californian Fb</option>
+      <option value="Calisto MT" style="font-family: Calisto MT;" title="Calisto MT"> Calisto MT</option>
+      <option value="Cambria" style="font-family: Cambria;" title="Cambria"> Cambria</option>
+      <option value="Candara" style="font-family: Candara;" title=" Candara"> Candara</option>
+      <option value="Candara Light" style="font-family: Candara Light;" title=" Candara Light"> Candara Light</option>
+      <option value="Castellar" style="font-family: Castellar;" title=" Castellar"> Castellar</option>
+      <option value="Centaur" style="font-family: Centaur;" title=" Centaur"> Centaur</option>
+      <option value="Century" style="font-family: Century;" title=" Century"> Century</option>
+      <option value="Century Gothic" style="font-family: Century Gothic;" title=" Century Gothic"> Century Gothic</option>
+      <option value="Century SchoolBook" style="font-family: Century SchoolBook;" title=" Century SchoolBook"> Century SchoolBook</option>
+      <option value="Chiller" style="font-family: Chiller;" title="Chiller"> Chiller</option>
+      <option value="Cinzel Black" style="font-family: Cinzel Black;" title="Cinzel Black"> Cinzel Black</option>
+      <option value="Colonna MT" style="font-family: Colonna MT;" title="Colonna MT"> Colonna MT</option>
+      <option value="Comic Sans MS" style="font-family: Comic Sans MS;" title="Comic Sans MS"> Comic Sans MS</option>
+      <option value="Consolas" style="font-family: Consolas;" title="Consolas"> Consolas</option>
+      <option value="Costantia" style="font-family: Costantia;" title="Costantia"> Costantia</option>
+      <option value="Cookie" style="font-family: Cookie;" title="Cookie"> Cookie</option>
+      <option value="Cooper Black" style="font-family: Cooper Black;" title="Cooper Black"> Cooper Black</option>
+      <option value="Copperplate Gothic Light" style="font-family: Copperplate Gothic Light;" title="Copperplate Gothic Light"> Copperplate Gothic Light</option>
+      <option value="Corbel" style="font-family: Corbel;" title="Corbel"> Corbel</option>
+      <option value="Corbel Light" style="font-family: Corbel Light;" title="Corbel Light"> Corbel Light</option>
+      <option value="Courgette" style="font-family: Courgette;" title="Courgette"> Courgette</option>
+      <option value="Courier New" style="font-family: Courier New;" title="Courier New"> Courier New</option>
+      <option value="Curlz MT" style="font-family: Curlz MT;" title="Curlz MT"> Curlz MT</option>
+      <option value="Doppio One" style="font-family: Doppio One;" title="Doppio One"> Doppio One</option>
+      <option value="Dubai" style="font-family: Dubai;" title="Dubai"> Dubai</option>
+      <option value="Dubai Light" style="font-family: Dubai Light;" title="Dubai Light"> Dubai Light</option>
+      <option value="Dubai Medium" style="font-family: Dubai Medium;" title="Dubai Medium"> Dubai Medium</option>
+      <option value="Ebrima" style="font-family: Ebrima;" title="Ebrima"> Ebrima</option>
+      <option value="Edwardian Script ITC" style="font-family: Edwardian Script ITC;font-size: 16px" title="Edwardian Script ITC"> Edwardian Script ITC</option>
+      <option value="Elephant" style="font-family: Elephant;" title="Elephant"> Elephant</option>
+      <option value="Engravers MT" style="font-family: Engravers MT;" title="Engravers MT"> Engravers MT</option>
+      <option value="Euphorigenic" style="font-family: Euphorigenic;" title="Euphorigenic"> Euphorigenic</option>
+      <option value="Felix Titling" style="font-family: Felix Titling;" title="Felix Titling"> Felix Titling</option>
+      <option value="Footlight MT Light" style="font-family: Footlight MT Light;" title="Footlight MT Light"> Footlight MT Light</option>
+      <option value="Forte" style="font-family: Forte;" title="Forte"> Forte</option>
+      <option value="Franklin Gothic Book" style="font-family: Franklin Gothic Book;" title="Franklin Gothic Book"> Franklin Gothic Book</option>
+      <option value="Franklin Gothic Heavy" style="font-family: Franklin Gothic Heavy;" title="Franklin Gothic Heavy"> Franklin Gothic Heavy</option>
+      <option value="Franklin Gothic Medium" style="font-family: Franklin Gothic Medium;" title="Franklin Gothic Medium"> Franklin Gothic Medium</option>
+      <option value="Freestyle Script" style="font-family: Freestyle Script; font-size: 16px" title="Freestyle Script"> Freestyle Script</option>
+      <option value="French Script MT" style="font-family: French Script MT;font-size: 16px" title="French Script MT"> French Script MT</option>
+      <option value="Fugaz One" style="font-family: Fugaz One;" title="Fugaz One"> Fugaz One</option>
+      <option value="Gabriola" style="font-family: Gabriola;" title="Gabriola"> Gabriola</option>
+      <option value="Gadugi" style="font-family: Gadugi;" title="Gadugi"> Gadugi</option>
+      <option value="Garamond" style="font-family: Garamond;" title="Garamond"> Garamond</option>
+      <option value="Georgia" style="font-family: Georgia;" title="Georgia"> Georgia</option>
+      <option value="Gigi" style="font-family: Gigi;" title="Gigi"> Gigi</option>
+      <option value="Gill Sans MT" style="font-family: Gill Sans MT;" title="Gill Sans MT"> Gill Sans MT</option>
+      <option value="Gill Sans MT Condensed" style="font-family: Gill Sans MT Condensed;" title="Gill Sans MT Condensed"> Gill Sans MT Condensed</option>
+      <option value="Goudy Old Style" style="font-family: Goudy Old Style;" title="Goudy Old Style"> Goudy Old Style</option>
+      <option value="Goudy Stout" style="font-family: Goudy Stout;" title="Goudy Stout"> Goudy Stout</option>
+      <option value="Great Vibes" style="font-family: Great Vibes;" title="Great Vibes"> Great Vibes</option>
+      <option value="Haettenschweiler" style="font-family: Haettenschweiler;" title="Haettenschweiler"> Haettenschweiler</option>
+      <option value="Harrington" style="font-family: Harrington;" title="Harrington"> Harrington</option>
+      <option value="High Tower Text" style="font-family: High Tower Text;" title="High Tower Text"> High Tower Text</option>
+      <option value="Impact" style="font-family: Impact;" title="Impact"> Impact</option>
+      <option value="Imprint MT Shadow" style="font-family: Imprint MT Shadow;" title="Imprint MT Shadow"> Imprint MT Shadow</option>
+      <option value="Informal Roman" style="font-family: Informal Roman;" title="Informal Roman"> Informal Roman</option>
+      <option value="Ink Free" style="font-family: Ink Free;" title="Ink Free"> Ink Free</option>
+      <option value="Javanese Text" style="font-family: Javanese Text;" title="Javanese Text"> Javanese Text</option>
+      <option value="Jokerman" style="font-family: Jokerman;" title="Jokerman"> Jokerman</option>
+      <option value="Juice ITC" style="font-family: Juice ITC;" title="Juice ITC"> Juice ITC</option>
+      <option value="Kalam" style="font-family: Kalam;" title="Kalam"> Kalam</option>
+      <option value="Kalam Light" style="font-family: Kalam Light;" title="Kalam Light"> Kalam Light</option>
+      <option value="Kristen ITC" style="font-family: Kristen ITC;" title="Kristen ITC"> Kristen ITC</option>
+      <option value="Kunstler Script" style="font-family: Kunstler Script;" title="Kunstler Script"> Kunstler Script</option>
+      <option value="Leelawadee" style="font-family: Leelawadee;" title="Leelawadee"> Leelawadee</option>
+      <option value="Leelawadee UI" style="font-family: Leelawadee UI;" title="Leelawadee UI"> Leelawadee UI</option>
+      <option value="Leelawadee UI Light" style="font-family: Leelawadee UI Light;" title="Leelawadee UI Light"> Leelawadee UI Light</option>
+      <option value="Lemon" style="font-family: Lemon;" title="Lemon"> Lemon</option>
+      <option value="LimeLight" style="font-family: LimeLight;" title="LimeLight"> LimeLight</option>
+      <option value="Lucida Bright" style="font-family: Lucida Bright;" title="Lucida Bright"> Lucida Bright</option>
+      <option value="Lucida Calligraphy" style="font-family: Lucida Calligraphy;" title="Lucida Calligraphy"> Lucida Calligraphy</option>
+      <option value="Lucida Console" style="font-family: Lucida Console;" title="Lucida Console"> Lucida Console</option>
+      <option value="Lucida Fax" style="font-family: Lucida Fax;" title="Lucida Fax"> Lucida Fax</option>
+      <option value="Lucida Handwriting" style="font-family: Lucida Handwriting;" title="Lucida Handwriting"> Lucida Handwriting</option>
+      <option value="Lucida Sans" style="font-family: Lucida Sans;" title="Lucida Sans"> Lucida Sans</option>
+      <option value="Lucida Sans Typewriter" style="font-family: Lucida Sans Typewriter;" title="Lucida Sans Typewriter"> Lucida Sans Typewriter</option>
+      <option value="Lucida Sans Unicode" style="font-family: Lucida Sans Unicode;" title="Lucida Sans Unicode"> Lucida Sans Unicode</option>
+      <option value="Magneto" style="font-family: Magneto;" title="Magneto"> Magneto</option>
+      <option value="Maiandra GD" style="font-family: Maiandra GD;" title="Maiandra GD"> Maiandra GD</option>
+      <option value="Malgun Gothic" style="font-family: Malgun Gothic;" title="Malgun Gothic"> Malgun Gothic</option>
+      <option value="Marcellus SC" style="font-family: Marcellus SC;" title="Marcellus SC"> Marcellus SC</option>
+      <option value="Marlett" style="font-family: Marlett;" title="Marlett"> Marlett</option>
+      <option value="Matura MT Script Capitals" style="font-family: Matura MT Script Capitals;" title="Matura MT Script Capitals"> Matura MT Script Capitals</option>
+      <option value="Megrim" style="font-family: Megrim;" title="Megrim"> Megrim</option>
+      <option value="MingLiU_HKSCS-ExtB" style="font-family: MingLiU_HKSCS-ExtB;" title="MingLiU_HKSCS-ExtB"> MingLiU_HKSCS-ExtB</option>
+      <option value="MingLiU-ExtB" style="font-family: MingLiU-ExtB;" title="MingLiU-ExtB"> MingLiU-ExtB</option>
+      <option value="Mistral" style="font-family: Mistral;" title="Mistral"> Mistral</option>
+      <option value="Modern No. 20" style="font-family: Modern No. 20;" title="Modern No. 20"> Modern No. 20</option>
+      <option value="Monotype Corsiva" style="font-family: Monotype Corsiva;" title="Monotype Corsiva"> Monotype Corsiva</option>
+      <option value="Montserrat Subrayada" style="font-family: Montserrat Subrayada;" title="Montserrat Subrayada"> Montserrat Subrayada</option>
+      <option value="MS Gothic" style="font-family: MS Gothic;" title="MS Gothic"> MS Gothic</option>
+      <option value="MS PGothic" style="font-family: MS PGothic;" title="MS PGothic"> MS PGothic</option>
+      <option value="MS Reference Sans Serif" style="font-family: MS Reference Sans Serif;" title="MS Reference Sans Serif">MS Reference Sans Serif</option>
+      <option value="MS UI Gothic" style="font-family: MS UI Gothic;" title="MS UI Gothic"> MS UI Gothic</option>
+      <option value="MT Extra" style="font-family: MT Extra;" title="MT Extra"> MT Extra</option>
+      <option value="MV Boli" style="font-family: MV Boli;" title="MV Boli"> MV Boli</option>
+      <option value="Myanmar Text" style="font-family: Myanmar Text;" title="Myanmar Text"> Myanmar Text</option>
+      <option value="News Gothic MT" style="font-family: News Gothic MT;" title="News Gothic MT"> News Gothic MT</option>
+      <option value="Niagara Engraved" style="font-family: Niagara Engraved; font-size: 16px" title="Niagara Engraved"> Niagara Engraved</option>
+      <option value="Niagara Solid" style="font-family: Niagara Solid; font-size: 16px" title="Niagara Solid"> Niagara Solid</option>
+      <option value="Nirmala UI" style="font-family: Nirmala UI;" title="Nirmala UI"> Nirmala UI</option>
+      <option value="Noto Sans" style="font-family: Noto Sans;" title="Noto Sans"> Noto Sans</option>
+      <option value="NSimSun" style="font-family: NSimSun;" title="NSimSun"> NSimSun</option>
+      <option value="Old English Text MT" style="font-family: Old English Text MT;" title="Old English Text MT"> Old English Text MT</option>
+      <option value="Onyx" style="font-family: Onyx; font-size: 20px" title="Onyx"> Onyx</option>
+      <option value="Orbitron" style="font-family: Orbitron;" title="Orbitron"> Orbitron</option>
+      <option value="Palace Script MT" style="font-family: Palace Script MT; font-size: 20px" title="Palace Script MT"> Palace Script MT</option>
+      <option value="Palatino Linotype" style="font-family: Palatino Linotype;" title="Palatino Linotype"> Palatino Linotype</option>
+      <option value="Papyrus" style="font-family: Papyrus;" title="Papyrus"> Papyrus</option>
+      <option value="Parchment" style="font-family: Parchment; font-size: 22px" title="Parchment"> Parchment</option>
+      <option value="Permanent Marker" style="font-family: Permanent Marker;" title="Permanent Marker"> Permanent Marker</option>
+      <option value="Perpetua" style="font-family: Perpetua;" title="Perpetua"> Perpetua </option>
+      <option value="Perpetua Titling MT" style="font-family: Perpetua Titling MT;" title="Perpetua Titling MT"> Perpetua Titling MT </option>
+      <option value="Playball" style="font-family: Playball" title="Playball"> Playball</option>
+      <option value="Playbill" style="font-family: Playbill" title="Playbill"> Playbill</option>
+      <option value="PMingLiU-ExtB" style="font-family: PMingLiU-ExtB" title="PMingLiU-ExtB"> PMingLiU-ExtB</option>
+      <option value="Poor Richard" style="font-family: Poor Richard;" title="Poor Richard"> Poor Richard</option>
+      <option value="Pristina" style="font-family: Pristina;" title="Pristina"> Pristina</option>
+      <option value="Quicksand" style="font-family: Quicksand;" title="Quicksand"> Quicksand</option>
+      <option value="Quicksand Light" style="font-family: Quicksand Light;" title="Quicksand Light"> Quicksand Light</option>
+      <option value="Quicksand Medium" style="font-family: Quicksand Medium;" title="Quicksand Medium"> Quicksand Medium</option>
+      <option value="Ravie" style="font-family: Ravie;" title="Ravie"> Ravie</option>
+      <option value="Rockwell" style="font-family: Rockwell;" title="Rockwell"> Rockwell</option>
+      <option value="Rockwell Condensed" style="font-family: Rockwell Condensed;" title="Rockwell Condensed"> Rockwell Condensed</option>
+      <option value="Russo One" style="font-family: Russo One;" title="Russo One"> Russo One</option>
+      <option value="Segoe Print" style="font-family: Segoe Print;" title="Segoe Print"> Segoe Print</option>
+      <option value="Segoe Script" style="font-family: Segoe Script;" title="Segoe Script"> Segoe Script</option>
+      <option value="Segoe UI" style="font-family: Segoe UI;" title="Segoe UI"> Segoe UI</option>
+      <option value="Segoe UI Black" style="font-family: Segoe UI Black;" title="Segoe UI Black"> Segoe UI Black</option>
+      <option value="Segoe UI Emoji" style="font-family: Segoe UI Emoji;" title="Segoe UI Emoji"> Segoe UI Emoji</option>
+      <option value="Segoe UI Light" style="font-family: Segoe UI Light;" title="Segoe UI Light"> Segoe UI Light</option>
+      <option value="Segoe UI SemiBold" style="font-family: Segoe UI SemiBold;" title="Segoe UI SemiBold"> Segoe UI SemiBold</option>
+      <option value="Segoe UI Symbol" style="font-family: Segoe UI Symbol;" title="Segoe UI Symbol"> Segoe UI Symbol</option>
+      <option value="Showcard Gothic" style="font-family: Showcard Gothic;" title="Showcard Gothic"> Showcard Gothic</option>
+      <option value="Shrikhand" style="font-family: Shrikhand;" title="Shrikhand"> Shrikhand</option>
+      <option value="Sigmar One" style="font-family: Sigmar One;" title="Sigmar One"> Sigmar One</option>
+      <option value="SimSun" style="font-family: SimSun;" title="SimSun"> SimSun</option>
+      <option value="SimSun-ExtB" style="font-family: SimSun-ExtB;" title="SimSun-ExtB"> SimSun-ExtB</option>
+      <option value="Sitka Banner" style="font-family: Sitka Banner;" title="Sitka Banner"> Sitka Banner</option>
+      <option value="Sitka Display" style="font-family: Sitka Display;" title="Sitka Display"> Sitka Display</option>
+      <option value="Sitka Heading" style="font-family: Sitka Heading;" title="Sitka Heading"> Sitka Heading</option>
+      <option value="Sitka Small" style="font-family: Sitka Small;" title="Sitka Small"> Sitka Small</option>
+      <option value="Sitka Subheading" style="font-family: Sitka Subheading;" title="Sitka Subheading"> Sitka Subheading</option>
+      <option value="Sitka Text" style="font-family: Sitka Text;" title="Sitka Text"> Sitka Text</option>
+      <option value="Snap ITC" style="font-family: Snap ITC;" title="Snap ITC"> Snap ITC</option>
+      <option value="Stencil" style="font-family: Stencil;" title="Stencil"> Stencil</option>
+      <option value="Sylfaen" style="font-family: Sylfaen;" title="Sylfaen"> Sylfaen</option>
+      <option value="Symbol" style="font-family: Symbol;" title="Symbol"> Symbol</option>
+      <option value="Tahoma" style="font-family: Tahoma;" title="Tahoma"> Tahoma</option>
+      <option value="Teko SemiBold" style="font-family: Teko SemiBold;" title="Teko SemiBold"> Teko SemiBold</option>
+      <option value="Tempus Sans ITC" style="font-family: Tempus Sans ITC;" title="Tempus Sans ITC"> Tempus Sans ITC</option>
+      <option value="Times New Roman" style="font-family: Times New Roman;" title="Times New Roman"> Times New Roman</option>
+      <option value="Trebuchet MS" style="font-family: Trebuchet MS;" title="Trebuchet MS"> Trebuchet MS</option>
+      <option value="TW Cen MT" style="font-family: TW Cen MT;" title="TW Cen MT"> TW Cen MT</option>
+      <option value="TW Cen MT Condensed" style="font-family: TW Cen MT Condensed;" title="TW Cen MT Condensed"> TW Cen MT Condensed</option>
+      <option value="Ubuntu Mono" style="font-family: Ubuntu Mono;" title="Ubuntu Mono"> Ubuntu Mono</option>
+      <option value="Verdana" style="font-family: Verdana;" title="Verdana"> Verdana</option>
+      <option value="Viner Hand ITC" style="font-family: Viner Hand ITC;" title="Viner Hand ITC"> Viner Hand ITC</option>
+      <option value="Vivaldi" style="font-family: Vivaldi; font-size: 16px" title="Vivaldi"> Vivaldi</option>
+      <option value="Vladimir Script" style="font-family: Vladimir Script;" title="Vladimir Script"> Vladimir Script</option>
+      <option value="Webdings" style="font-family: Webdings;" title="Webdings"> Webdings</option>
+      <option value="Wide Latin" style="font-family: Wide Latin;" title="Wide Latin"> Wide Latin</option>
+      <option value="Wingdings" style="font-family: Wingdings;" title="Wingdings"> Wingdings</option>
+      <option value="Yellowtail" style="font-family: Yellowtail;" title="Yellowtail"> Yellowtail</option>
+      <option value="YU Gothic" style="font-family: YU Gothic;" title="YU Gothic"> YU Gothic</option>
+      <option value="YU Gothic Light" style="font-family: YU Gothic Light;" title="YU Gothic Light"> YU Gothic Light</option>
+      <option value="YU Gothic Medium" style="font-family: YU Gothic Medium;" title="YU Gothic Medium"> YU Gothic Medium</option>
+      <option value="YU Gothic UI" style="font-family: YU Gothic UI;" title="YU Gothic UI"> YU Gothic UI</option>
+      <option value="YU Gothic UI Light" style="font-family: YU Gothic UI Light;" title="YU Gothic UI Light"> YU Gothic UI Light</option>
+      <option value="YU Gothic UI SemiBold" style="font-family: YU Gothic UI SemiBold;" title="YU Gothic UI SemiBold"> YU Gothic UI SemiBold</option>
+      </select>
+</body></html>
